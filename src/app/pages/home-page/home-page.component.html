@@ -1,0 +1,23 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4 col-xl-2 col-sm">
+      <div class="card light-bg">
+        <div class="card-body">
+          <h5 class="card-title light-text text-center">Clientes Cadastrados</h5>
+          <div class="card-text light-text">
+            <div id="info" class="d-flex p-2" style="font-size: 3rem;">
+              <div id="icon" style="padding: .5rem" class="m-auto">
+                <i class="las la-users"></i>
+              </div>
+              <div id="data" class="m-auto">
+                {{customerCount < 10 ? ('0'+customerCount) : customerCount}}
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-green w-100" routerLink="/list-costumers" *ngIf="customerCount > 0">Listar clientes</button>
+          <button class="btn btn-blue w-100" routerLink="/new-costumer" *ngIf="customerCount == 0">Cadastrar cliente</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

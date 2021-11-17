@@ -1,0 +1,13 @@
+/* App color variables */
+
+:root {
+  --dark-bg: #191A21;
+  --light-bg: #262A34;
+  --contrast-text-color: #FEFFFE;
+  --light-text-color: #66697D;
+  --light-blue: #266BFD;
+  --light-rose: #A46EFC;
+  --lemon-green: #9FE483;
+  --dark-lemon-green: #74B060;
+
+}

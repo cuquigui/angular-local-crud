@@ -1,0 +1,95 @@
+<div class="container" class="light-text">
+  <div class="row">
+    <div class="col text-center">
+      <h4 *ngIf="!hasIndex">Novo Cliente</h4>
+      <h4 *ngIf="hasIndex && !editingMode">Visualizando Cliente</h4>
+      <h4 *ngIf="hasIndex && editingMode">Editando Cliente</h4>
+    </div>
+  </div>
+  <div class="row m-3">
+    <div class="col-12">
+      <div class="card light-bg">
+        <div class="card-title p-3">
+          <span *ngIf="hasIndex && !editingMode">Modo visualização</span>
+          <span *ngIf="hasIndex && editingMode">Modo edição</span>
+        </div>
+        <div class="card-body">
+          <div class="card-text light-text">
+            <div class="row justify-content-center mt-3">
+              <div class="col-md-6 col-sm">
+                <div class="row">
+                  <div class="col-12">
+                    <div class="form-floating mb-3">
+                      <input type="email" class="form-control" id="inputName" [(ngModel)]="inputName" [disabled]="hasIndex && !editingMode">
+                      <label for="inputName">Nome</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12">
+                    <div class="form-floating mb-3">
+                      <input mask="CPF_CNPJ" class="form-control" id="inputCpf" [(ngModel)]="inputCPF" [disabled]="hasIndex && !editingMode">
+                      <label for="inputCpf">CPF</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12">
+                    <div class="form-floating mb-3">
+                      <input #inputPhoneEl mask="(00) 0000-0000 || (00) 0 0000-0000" class="form-control" id="inputPhone" [(ngModel)]="inputPhone" [disabled]="hasIndex && !editingMode">
+                      <label for="inputPhone">Telefone</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12">
+                    <div class="form-floating mb-3">
+                      <input type="date" class="form-control custom-input" id="inputName" [(ngModel)]="inputBirthDate" [disabled]="hasIndex && !editingMode">
+                      <label for="inputName">Data de Nascimento</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12">
+                    <label for="inputName">Veículo</label>
+                    <fieldset class="p-3 border rounded">
+                      <div class="row">
+                        <div class="col-md-6 col-sm mt-3">
+                          <label>Tipo de Veículo</label>
+                          <select class="form-control" [(ngModel)]="vehicleType" [disabled]="hasIndex && !editingMode">
+                            <option value="carros">Carro</option>
+                            <option value="motos">Moto</option>
+                            <option value="caminhoes">Caminhão</option>
+                          </select>
+                        </div>
+                        <div class="col-md-6 col-sm mt-3">
+                          <label>Marca</label>
+                          <select class="form-control" [(ngModel)]="manufacterSelected" (change)="getModels()" [disabled]="hasIndex && !editingMode">
+                            <option *ngFor="let m of manufacters" [value]="m.codigo">{{m.nome}}</option>
+                          </select>
+                        </div>
+                        <div class="col-md-12 col-sm mt-3">
+                          <label>Modelo</label>
+                          <select class="form-control" [(ngModel)]="modelSelected" [disabled]="hasIndex && !editingMode">
+                            <option *ngFor="let m of models" [value]="m.codigo">{{m.nome}}</option>
+                          </select>
+                        </div>
+                      </div>
+                    </fieldset>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-12" style="text-align: right">
+              <button class="btn btn-blue btn-large" (click)="insertNewCostumer()" *ngIf="!hasIndex">Cadastrar cliente</button>
+              <button class="btn btn-blue btn-large" (click)="editingMode = true" *ngIf="hasIndex && !editingMode">Habilitar Edição</button>
+              <button class="btn btn-green btn-large" (click)="updateCostumer()" *ngIf="hasIndex && editingMode">Salvar Edição</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
